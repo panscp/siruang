@@ -16,7 +16,10 @@
             max-width: 520px;
         ">
 
-            <!-- HEADER -->
+            <!-- =========================
+                 HEADER
+            ========================== -->
+
             <div style="
                 text-align: center;
                 margin-bottom: 25px;
@@ -40,6 +43,7 @@
                     SR
                 </div>
 
+
                 <div style="
                     color: #008f6b;
                     font-size: 13px;
@@ -50,28 +54,33 @@
                     SIRUANG
                 </div>
 
+
                 <h1 style="
                     margin: 0 0 8px;
                     font-size: 32px;
                     line-height: 1.2;
                     color: #0a1428;
                 ">
-                    Buat akun
+                    Buat akun SIRUANG
                 </h1>
+
 
                 <p style="
                     margin: 0;
                     color: #687388;
                     font-size: 14px;
                 ">
-                    Daftar untuk dapat mengajukan peminjaman ruang
+                    Daftarkan akun untuk melanjutkan proses peminjaman
                     dan memantau pengajuan Anda.
                 </p>
 
             </div>
 
 
-            <!-- REGISTER CARD -->
+            <!-- =========================
+                 REGISTER CARD
+            ========================== -->
+
             <div style="
                 background: #ffffff;
                 border: 1px solid #dfe7e3;
@@ -80,12 +89,20 @@
                 box-shadow: 0 10px 30px rgba(20, 40, 30, 0.06);
             ">
 
-                <form method="POST" action="{{ route('register.submit') }}">
+                <form
+                    method="POST"
+                    action="{{ route('register.submit') }}"
+                >
 
                     @csrf
 
-                    <!-- ERROR -->
+
+                    <!-- =========================
+                         ERROR
+                    ========================== -->
+
                     @if ($errors->any())
+
                         <div style="
                             margin-bottom: 20px;
                             padding: 12px 14px;
@@ -96,15 +113,27 @@
                             font-size: 12px;
                             line-height: 1.6;
                         ">
+
                             @foreach ($errors->all() as $error)
-                                <div>{{ $error }}</div>
+
+                                <div>
+                                    {{ $error }}
+                                </div>
+
                             @endforeach
+
                         </div>
+
                     @endif
 
 
-                    <!-- NAMA -->
-                    <div style="margin-bottom: 18px;">
+                    <!-- =========================
+                         NAMA
+                    ========================== -->
+
+                    <div style="
+                        margin-bottom: 18px;
+                    ">
 
                         <label
                             for="name"
@@ -118,6 +147,7 @@
                         >
                             Nama Lengkap
                         </label>
+
 
                         <input
                             type="text"
@@ -142,8 +172,13 @@
                     </div>
 
 
-                    <!-- EMAIL -->
-                    <div style="margin-bottom: 18px;">
+                    <!-- =========================
+                         EMAIL
+                    ========================== -->
+
+                    <div style="
+                        margin-bottom: 18px;
+                    ">
 
                         <label
                             for="email"
@@ -157,6 +192,7 @@
                         >
                             Email
                         </label>
+
 
                         <input
                             type="email"
@@ -181,8 +217,13 @@
                     </div>
 
 
-                    <!-- PASSWORD -->
-                    <div style="margin-bottom: 18px;">
+                    <!-- =========================
+                         PASSWORD
+                    ========================== -->
+
+                    <div style="
+                        margin-bottom: 18px;
+                    ">
 
                         <label
                             for="password"
@@ -196,6 +237,7 @@
                         >
                             Password
                         </label>
+
 
                         <input
                             type="password"
@@ -219,8 +261,13 @@
                     </div>
 
 
-                    <!-- KONFIRMASI PASSWORD -->
-                    <div style="margin-bottom: 20px;">
+                    <!-- =========================
+                         KONFIRMASI PASSWORD
+                    ========================== -->
+
+                    <div style="
+                        margin-bottom: 20px;
+                    ">
 
                         <label
                             for="password_confirmation"
@@ -234,6 +281,7 @@
                         >
                             Konfirmasi Password
                         </label>
+
 
                         <input
                             type="password"
@@ -257,7 +305,10 @@
                     </div>
 
 
-                    <!-- INFO -->
+                    <!-- =========================
+                         INFO
+                    ========================== -->
+
                     <div style="
                         margin-bottom: 22px;
                         padding: 12px 14px;
@@ -268,12 +319,15 @@
                         font-size: 12px;
                         line-height: 1.6;
                     ">
-                        Setelah akun dibuat, Anda perlu melengkapi
-                        data diri sebelum dapat mengajukan peminjaman.
+                        Setelah akun dibuat, Anda dapat masuk ke SIRUANG
+                        dan melanjutkan pengajuan peminjaman ruangan.
                     </div>
 
 
-                    <!-- BUTTON -->
+                    <!-- =========================
+                         BUTTON
+                    ========================== -->
+
                     <button
                         type="submit"
                         class="btn btn-primary"
@@ -289,7 +343,10 @@
                 </form>
 
 
-                <!-- LOGIN -->
+                <!-- =========================
+                     LOGIN
+                ========================== -->
+
                 <div style="
                     margin-top: 22px;
                     padding-top: 20px;
@@ -317,7 +374,10 @@
             </div>
 
 
-            <!-- BACK -->
+            <!-- =========================
+                 BACK TO HOME
+            ========================== -->
+
             <div style="
                 margin-top: 20px;
                 text-align: center;

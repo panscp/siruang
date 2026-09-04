@@ -29,16 +29,23 @@
             color: inherit;
         }
 
+        button,
+        input,
+        textarea,
+        select {
+            font-family: inherit;
+        }
+
         .container {
             width: min(1180px, calc(100% - 40px));
             margin: 0 auto;
         }
 
         /* =========================
-           NAVBAR
+           NAVBAR PUBLIC
         ========================= */
 
-        .navbar {
+        .public-navbar {
             background: #ffffff;
             border-bottom: 1px solid #e4eae7;
             position: sticky;
@@ -46,24 +53,34 @@
             z-index: 1000;
         }
 
-        .navbar-inner {
+        .public-navbar-inner {
             min-height: 76px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             gap: 30px;
         }
 
-        .brand {
+        /* =========================
+           BRAND
+        ========================= */
+
+        .public-brand {
             display: flex;
             align-items: center;
             gap: 12px;
+
+            flex-shrink: 0;
         }
 
-        .brand-logo {
+        .public-brand-logo {
             width: 44px;
             height: 44px;
+
             border-radius: 10px;
+
             background: #008f6b;
             color: #ffffff;
 
@@ -75,80 +92,118 @@
             font-weight: 800;
         }
 
-        .brand-name {
+        .public-brand-name {
             font-size: 19px;
             font-weight: 800;
+
             color: #0e1728;
         }
 
-        .brand-subtitle {
+        .public-brand-subtitle {
             font-size: 12px;
             color: #677287;
+
             margin-top: 1px;
         }
 
-        .nav-menu {
+        /* =========================
+           NAV MENU
+        ========================= */
+
+        .public-nav-menu {
             display: flex;
             align-items: center;
             gap: 28px;
+
+            margin-left: auto;
         }
 
-        .nav-menu a {
+        .public-nav-menu a {
             font-size: 14px;
             font-weight: 700;
+
             color: #465169;
+
             transition: 0.2s ease;
         }
 
-        .nav-menu a:hover {
+        .public-nav-menu a:hover {
             color: #008f6b;
         }
+
+        .public-nav-menu a.active {
+            color: #008f6b;
+        }
+
+        /* =========================
+           NAV ACTION
+        ========================= */
 
         .nav-actions {
             display: flex;
             align-items: center;
             gap: 10px;
+
+            flex-shrink: 0;
         }
+
+        /* =========================
+           BUTTON
+        ========================= */
 
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
 
-            padding: 11px 18px;
+            min-height: 42px;
+
+            padding: 10px 18px;
 
             border-radius: 10px;
+
             border: 1px solid transparent;
 
             font-size: 14px;
             font-weight: 700;
 
             cursor: pointer;
-            transition: 0.2s ease;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
         }
 
         .btn-primary {
             background: #008f6b;
             color: #ffffff;
+            border-color: #008f6b;
         }
 
         .btn-primary:hover {
-            background: #007957;
+            background: #007c5d;
+            border-color: #007c5d;
         }
 
         .btn-outline {
             background: #ffffff;
-            color: #26324a;
-            border-color: #dce5e1;
+            color: #008f6b;
+            border-color: #b9d8cc;
         }
 
         .btn-outline:hover {
-            color: #008f6b;
+            background: #eff9f5;
             border-color: #008f6b;
         }
 
         /* =========================
-           MAIN
+           CONTENT
         ========================= */
 
         main {
@@ -159,13 +214,14 @@
            FOOTER
         ========================= */
 
-        .footer {
+        .public-footer {
             margin-top: 60px;
+
             background: #ffffff;
             border-top: 1px solid #e4eae7;
         }
 
-        .footer-inner {
+        .public-footer-inner {
             min-height: 100px;
 
             display: flex;
@@ -175,20 +231,25 @@
             gap: 30px;
         }
 
-        .footer-brand strong {
-            display: block;
-            color: #101a2d;
-            margin-bottom: 3px;
+        .public-footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
 
-        .footer-brand span {
-            color: #788397;
-            font-size: 13px;
+        .public-footer-brand strong {
+            font-size: 15px;
+            color: #0e1728;
         }
 
-        .footer-copy {
-            color: #788397;
-            font-size: 13px;
+        .public-footer-brand span {
+            font-size: 12px;
+            color: #677287;
+        }
+
+        .public-footer-copy {
+            font-size: 12px;
+            color: #7a8495;
             text-align: right;
         }
 
@@ -197,32 +258,86 @@
         ========================= */
 
         @media (max-width: 900px) {
-            .nav-menu {
+
+            .public-navbar-inner {
+                gap: 18px;
+            }
+
+            .public-nav-menu {
+                gap: 18px;
+            }
+
+            .public-nav-menu a {
+                font-size: 13px;
+            }
+
+            .btn {
+                padding: 9px 15px;
+            }
+        }
+
+        @media (max-width: 720px) {
+
+            .public-navbar-inner {
+                min-height: 70px;
+                gap: 14px;
+            }
+
+            .public-brand-subtitle {
                 display: none;
             }
 
-            .footer-inner {
-                flex-direction: column;
-                justify-content: center;
-                align-items: flex-start;
-                padding: 20px 0;
+            .public-nav-menu {
+                gap: 14px;
             }
 
-            .footer-copy {
+            .public-nav-menu a {
+                font-size: 12px;
+            }
+
+            .nav-actions {
+                display: none;
+            }
+
+            .public-footer-inner {
+                padding: 25px 0;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .public-footer-copy {
                 text-align: left;
             }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 560px) {
+
             .container {
                 width: min(100% - 24px, 1180px);
             }
 
-            .brand-subtitle {
-                display: none;
+            .public-navbar-inner {
+                min-height: 64px;
             }
 
-            .nav-actions .btn-outline {
+            .public-brand-logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .public-brand-name {
+                font-size: 17px;
+            }
+
+            .public-nav-menu {
+                gap: 12px;
+            }
+
+            .public-nav-menu a {
+                font-size: 12px;
+            }
+
+            .public-nav-menu a:nth-child(3) {
                 display: none;
             }
         }
@@ -234,61 +349,79 @@
 <body>
 
     <!-- =========================
-         NAVBAR PUBLIK
+         NAVBAR PUBLIC
     ========================= -->
 
-    <header class="navbar">
-        <div class="container navbar-inner">
+    <header class="public-navbar">
 
-            <a href="/" class="brand">
+        <div class="container public-navbar-inner">
 
-                <div class="brand-logo">
+            <!-- BRAND -->
+
+            <a href="{{ route('home') }}" class="public-brand">
+
+                <div class="public-brand-logo">
                     SR
                 </div>
 
                 <div>
-                    <div class="brand-name">
+
+                    <div class="public-brand-name">
                         SIRUANG
                     </div>
 
-                    <div class="brand-subtitle">
+                    <div class="public-brand-subtitle">
                         Sistem Informasi Peminjaman Ruang
                     </div>
+
                 </div>
 
             </a>
 
 
-            <nav class="nav-menu">
+            <!-- MENU -->
 
-                <a href="/">
+            <nav class="public-nav-menu">
+
+                <a
+                    href="{{ route('home') }}"
+                    class="{{ request()->routeIs('home') ? 'active' : '' }}"
+                >
                     Beranda
                 </a>
 
-                <a href="/rooms">
+                <a
+                    href="{{ route('rooms.index') }}"
+                    class="{{ request()->routeIs('rooms.*') ? 'active' : '' }}"
+                >
                     Ruangan
                 </a>
 
-                <a href="/calendar">
+                <a
+                    href="{{ route('calendar') }}"
+                    class="{{ request()->routeIs('calendar') ? 'active' : '' }}"
+                >
                     Ketersediaan
                 </a>
 
             </nav>
 
 
+            <!-- ACTION -->
+
             <div class="nav-actions">
 
-                <a href="/login" class="btn btn-outline">
-                    Login
-                </a>
-
-                <a href="/login" class="btn btn-primary">
+                <a
+                    href="{{ route('login') }}"
+                    class="btn btn-primary"
+                >
                     Ajukan Peminjaman
                 </a>
 
             </div>
 
         </div>
+
     </header>
 
 
@@ -305,11 +438,11 @@
          FOOTER
     ========================= -->
 
-    <footer class="footer">
+    <footer class="public-footer">
 
-        <div class="container footer-inner">
+        <div class="container public-footer-inner">
 
-            <div class="footer-brand">
+            <div class="public-footer-brand">
 
                 <strong>
                     SIRUANG
@@ -321,7 +454,8 @@
 
             </div>
 
-            <div class="footer-copy">
+
+            <div class="public-footer-copy">
 
                 © {{ date('Y') }} SIRUANG
                 — Sistem Informasi Peminjaman Ruang

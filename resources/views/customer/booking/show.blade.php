@@ -24,7 +24,7 @@
             </h1>
 
             <p>
-                Berikut informasi lengkap mengenai pengajuan peminjaman ruangan Anda.
+                Lihat informasi pengajuan peminjaman ruangan dan status prosesnya.
             </p>
 
         </div>
@@ -84,19 +84,19 @@
 
             $statusDescriptions = [
                 'menunggu' =>
-                    'Pengajuan Anda sudah diterima dan sedang diperiksa oleh admin.',
+                    'Pengajuan Anda sedang menunggu pemeriksaan dan persetujuan.',
 
                 'disetujui' =>
-                    'Pengajuan Anda telah disetujui dan ruangan dapat digunakan sesuai jadwal.',
+                    'Pengajuan Anda telah disetujui. Ruangan dapat digunakan sesuai jadwal yang diajukan.',
 
                 'ditolak' =>
-                    'Pengajuan Anda belum dapat disetujui. Silakan perhatikan catatan admin jika tersedia.',
+                    'Pengajuan Anda tidak dapat disetujui. Perhatikan catatan yang diberikan apabila tersedia.',
 
                 'selesai' =>
-                    'Peminjaman telah selesai sesuai jadwal yang diajukan.',
+                    'Peminjaman ruangan telah selesai sesuai jadwal yang diajukan.',
 
                 'dibatalkan' =>
-                    'Pengajuan ini telah dibatalkan dan tidak lagi digunakan untuk peminjaman.',
+                    'Pengajuan ini telah dibatalkan dan tidak lagi digunakan.',
             ];
 
             $currentStatusLabel =
@@ -412,7 +412,7 @@
                 <form
                     method="POST"
                     action="{{ route('booking.cancel', $booking) }}"
-                    onsubmit="return confirm('Batalkan pengajuan peminjaman ini?');"
+                    onsubmit="return confirm('Apakah Anda yakin ingin membatalkan pengajuan ini?');"
                 >
 
                     @csrf

@@ -21,7 +21,7 @@
             </h1>
 
             <p>
-                Berikut daftar pengajuan peminjaman ruangan yang pernah Anda lakukan.
+                Pantau seluruh pengajuan peminjaman ruangan yang pernah Anda lakukan.
             </p>
 
         </div>
@@ -36,7 +36,7 @@
             <div class="history-filter">
 
                 <div class="history-filter-label">
-                    Tampilkan
+                    Filter Status
                 </div>
 
                 <div class="history-filter-buttons">
@@ -300,7 +300,7 @@
                     </h2>
 
                     <p>
-                        Belum ada pengajuan dengan status yang dipilih.
+                        Tidak ada pengajuan yang sesuai dengan status yang dipilih.
                     </p>
 
                 </div>
@@ -324,8 +324,8 @@
                 </h2>
 
                 <p>
-                    Anda belum memiliki riwayat peminjaman ruangan.
-                    Silakan ajukan peminjaman terlebih dahulu.
+                    Anda belum memiliki pengajuan peminjaman ruangan.
+                    Ajukan peminjaman untuk mulai menggunakan layanan SIRUANG.
                 </p>
 
                 <a

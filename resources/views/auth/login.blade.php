@@ -16,7 +16,10 @@
             max-width: 460px;
         ">
 
-            <!-- HEADER -->
+            <!-- =========================
+                 HEADER
+            ========================== -->
+
             <div style="
                 text-align: center;
                 margin-bottom: 25px;
@@ -40,6 +43,7 @@
                     SR
                 </div>
 
+
                 <div style="
                     color: #008f6b;
                     font-size: 13px;
@@ -50,28 +54,33 @@
                     SIRUANG
                 </div>
 
+
                 <h1 style="
                     margin: 0 0 8px;
                     font-size: 32px;
                     line-height: 1.2;
                     color: #0a1428;
                 ">
-                    Masuk ke akun
+                    Masuk untuk melanjutkan pengajuan
                 </h1>
+
 
                 <p style="
                     margin: 0;
                     color: #687388;
                     font-size: 14px;
                 ">
-                    Login untuk mengajukan peminjaman dan melihat
-                    riwayat pengajuan Anda.
+                    Masuk ke akun Anda untuk memilih ruangan,
+                    menentukan jadwal, dan mengajukan peminjaman.
                 </p>
 
             </div>
 
 
-            <!-- LOGIN CARD -->
+            <!-- =========================
+                 LOGIN CARD
+            ========================== -->
+
             <div style="
                 background: #ffffff;
                 border: 1px solid #dfe7e3;
@@ -84,8 +93,14 @@
 
                     @csrf
 
-                    <!-- EMAIL -->
-                    <div style="margin-bottom: 20px;">
+
+                    <!-- =========================
+                         EMAIL
+                    ========================== -->
+
+                    <div style="
+                        margin-bottom: 20px;
+                    ">
 
                         <label
                             for="email"
@@ -99,6 +114,7 @@
                         >
                             Email
                         </label>
+
 
                         <input
                             type="email"
@@ -122,8 +138,13 @@
                     </div>
 
 
-                    <!-- PASSWORD -->
-                    <div style="margin-bottom: 14px;">
+                    <!-- =========================
+                         PASSWORD
+                    ========================== -->
+
+                    <div style="
+                        margin-bottom: 14px;
+                    ">
 
                         <label
                             for="password"
@@ -137,6 +158,7 @@
                         >
                             Password
                         </label>
+
 
                         <input
                             type="password"
@@ -159,8 +181,12 @@
                     </div>
 
 
-                    <!-- VALIDATION ERROR -->
+                    <!-- =========================
+                         VALIDATION ERROR
+                    ========================== -->
+
                     @if ($errors->any())
+
                         <div style="
                             margin-bottom: 18px;
                             padding: 12px 14px;
@@ -171,15 +197,26 @@
                             font-size: 12px;
                             line-height: 1.6;
                         ">
+
                             @foreach ($errors->all() as $error)
-                                <div>{{ $error }}</div>
+
+                                <div>
+                                    {{ $error }}
+                                </div>
+
                             @endforeach
+
                         </div>
+
                     @endif
 
 
-                    <!-- SUCCESS MESSAGE -->
+                    <!-- =========================
+                         SUCCESS MESSAGE
+                    ========================== -->
+
                     @if (session('success'))
+
                         <div style="
                             margin-bottom: 18px;
                             padding: 12px 14px;
@@ -192,13 +229,17 @@
                         ">
                             {{ session('success') }}
                         </div>
+
                     @endif
 
 
-                    <!-- INFO -->
+                    <!-- =========================
+                         INFORMATION
+                    ========================== -->
+
                     <div style="
                         margin-bottom: 22px;
-                        padding: 12px 14px;
+                        padding: 13px 14px;
                         border-radius: 10px;
                         background: #eef8f4;
                         border: 1px solid #d6eee5;
@@ -206,12 +247,18 @@
                         font-size: 12px;
                         line-height: 1.6;
                     ">
-                        Anda harus login terlebih dahulu untuk
-                        melakukan pengajuan peminjaman ruang.
+
+                        Setelah masuk, Anda dapat melanjutkan
+                        proses peminjaman dan memantau pengajuan
+                        melalui akun SIRUANG.
+
                     </div>
 
 
-                    <!-- BUTTON -->
+                    <!-- =========================
+                         BUTTON
+                    ========================== -->
+
                     <button
                         type="submit"
                         class="btn btn-primary"
@@ -227,7 +274,10 @@
                 </form>
 
 
-                <!-- REGISTER -->
+                <!-- =========================
+                     REGISTER
+                ========================== -->
+
                 <div style="
                     margin-top: 22px;
                     padding-top: 20px;
@@ -255,7 +305,10 @@
             </div>
 
 
-            <!-- BACK -->
+            <!-- =========================
+                 BACK TO HOME
+            ========================== -->
+
             <div style="
                 margin-top: 20px;
                 text-align: center;

@@ -2,6 +2,10 @@
 
 @section('content')
 
+    <!-- =========================
+         HERO
+    ========================== -->
+
     <section style="
         padding: 80px 0;
         background: linear-gradient(135deg, #eefaf6 0%, #ffffff 65%, #f6fbf9 100%);
@@ -14,6 +18,7 @@
         ">
 
             <div>
+
                 <div style="
                     color: #008f6b;
                     font-size: 14px;
@@ -23,6 +28,7 @@
                     SISTEM INFORMASI PEMINJAMAN RUANG
                 </div>
 
+
                 <h1 style="
                     font-size: clamp(40px, 5vw, 62px);
                     line-height: 1.08;
@@ -30,8 +36,9 @@
                     color: #071126;
                     margin-bottom: 20px;
                 ">
-                    Temukan ruang yang tepat untuk kegiatan Anda.
+                    Pilih ruang yang sesuai untuk kegiatan Anda.
                 </h1>
+
 
                 <p style="
                     max-width: 650px;
@@ -39,15 +46,17 @@
                     font-size: 17px;
                     margin-bottom: 30px;
                 ">
-                    Periksa ketersediaan ruangan, lihat detail unit,
-                    dan ajukan peminjaman ruang melalui SIRUANG.
+                    Lihat pilihan ruangan, tentukan jadwal, dan ajukan peminjaman
+                    sesuai kebutuhan kegiatan Anda.
                 </p>
+
 
                 <div style="
                     display: flex;
                     flex-wrap: wrap;
                     gap: 12px;
                 ">
+
                     <a href="/rooms" class="btn btn-primary">
                         Lihat Ruangan
                     </a>
@@ -55,9 +64,15 @@
                     <a href="/login" class="btn btn-outline">
                         Ajukan Peminjaman
                     </a>
+
                 </div>
+
             </div>
 
+
+            <!-- =========================
+                 HERO INFO CARD
+            ========================== -->
 
             <div style="
                 background: #ffffff;
@@ -76,13 +91,14 @@
                     SIRUANG
                 </div>
 
+
                 <h2 style="
                     font-size: 27px;
                     line-height: 1.2;
                     margin-bottom: 20px;
                     color: #101a2e;
                 ">
-                    Peminjaman ruang yang lebih teratur
+                    Peminjaman ruang yang lebih mudah
                 </h2>
 
 
@@ -93,6 +109,7 @@
                     padding: 15px 0;
                     border-bottom: 1px solid #edf1ef;
                 ">
+
                     <span style="font-weight: 700;">
                         4 Ruangan
                     </span>
@@ -107,6 +124,7 @@
                     ">
                         Tersedia
                     </span>
+
                 </div>
 
 
@@ -117,8 +135,9 @@
                     padding: 15px 0;
                     border-bottom: 1px solid #edf1ef;
                 ">
+
                     <span style="font-weight: 700;">
-                        Multi Unit
+                        Pilihan Unit
                     </span>
 
                     <span style="
@@ -131,6 +150,7 @@
                     ">
                         Aktif
                     </span>
+
                 </div>
 
 
@@ -141,6 +161,7 @@
                     padding: 15px 0;
                     border-bottom: 1px solid #edf1ef;
                 ">
+
                     <span style="font-weight: 700;">
                         Kalender
                     </span>
@@ -155,6 +176,7 @@
                     ">
                         Tersedia
                     </span>
+
                 </div>
 
 
@@ -164,8 +186,9 @@
                     align-items: center;
                     padding: 15px 0 0;
                 ">
+
                     <span style="font-weight: 700;">
-                        Persetujuan Admin
+                        Status Pengajuan
                     </span>
 
                     <span style="
@@ -176,8 +199,9 @@
                         font-size: 12px;
                         font-weight: 800;
                     ">
-                        Terintegrasi
+                        Dapat dipantau
                     </span>
+
                 </div>
 
             </div>
@@ -186,10 +210,15 @@
     </section>
 
 
+    <!-- =========================
+         PILIHAN RUANGAN
+    ========================== -->
+
     <section style="
         padding: 70px 0;
         background: #ffffff;
     ">
+
         <div class="container">
 
             <div style="margin-bottom: 30px;">
@@ -203,21 +232,23 @@
                     RUANGAN SIRUANG
                 </div>
 
+
                 <h2 style="
                     font-size: 32px;
                     color: #0a1428;
                     margin-bottom: 6px;
                 ">
-                    Pilihan Ruangan
+                    Pilihan Ruang
                 </h2>
+
 
                 <p style="
                     color: #677287;
                     max-width: 750px;
                 ">
-                    Tersedia empat ruangan yang dapat digunakan untuk
-                    berbagai kegiatan. Setiap ruangan dapat memiliki
-                    beberapa unit.
+                    Pilih ruangan sesuai kebutuhan kegiatan Anda.
+                    Setiap ruangan memiliki kapasitas dan karakteristik
+                    yang dapat disesuaikan dengan kebutuhan peminjaman.
                 </p>
 
             </div>
@@ -230,32 +261,39 @@
             ">
 
                 @php
+
                     $rooms = [
+
                         [
                             'name' => 'Aula Utama',
                             'capacity' => '100 orang',
                             'units' => '3 Unit',
                             'description' => 'Ruang utama untuk rapat, seminar, pelatihan, dan kegiatan berskala besar.',
                         ],
+
                         [
                             'name' => 'Ruang Rapat 1',
                             'capacity' => '30 orang',
                             'units' => '2 Unit',
                             'description' => 'Ruang rapat untuk koordinasi, diskusi, dan pertemuan internal.',
                         ],
+
                         [
                             'name' => 'Ruang Rapat 2',
                             'capacity' => '20 orang',
                             'units' => '2 Unit',
                             'description' => 'Ruang untuk rapat kecil, diskusi, dan koordinasi internal.',
                         ],
+
                         [
                             'name' => 'Ruang Diklat',
                             'capacity' => '40 orang',
                             'units' => '3 Unit',
                             'description' => 'Ruang untuk pendidikan, pelatihan, workshop, dan kegiatan sejenis.',
                         ],
+
                     ];
+
                 @endphp
 
 
@@ -268,6 +306,7 @@
                         overflow: hidden;
                         box-shadow: 0 8px 25px rgba(20, 40, 30, 0.05);
                     ">
+
 
                         <div style="
                             height: 180px;
@@ -300,6 +339,7 @@
                                 ">
                                     {{ $room['name'] }}
                                 </div>
+
 
                                 <span style="
                                     background: #ddf8ec;
@@ -347,6 +387,7 @@
                                     {{ $room['units'] }}
                                 </span>
 
+
                                 <a href="/rooms" class="btn btn-primary">
                                     Lihat Detail
                                 </a>
@@ -362,8 +403,13 @@
             </div>
 
         </div>
+
     </section>
 
+
+    <!-- =========================
+         CARA PENGAJUAN
+    ========================== -->
 
     <section style="
         padding: 70px 0;
@@ -383,20 +429,22 @@
                     CARA PENGAJUAN
                 </div>
 
+
                 <h2 style="
                     font-size: 32px;
                     color: #0a1428;
                     margin-bottom: 6px;
                 ">
-                    Proses peminjaman lebih terarah
+                    Ajukan peminjaman dengan mudah
                 </h2>
+
 
                 <p style="
                     color: #677287;
                     max-width: 750px;
                 ">
-                    Pengunjung dapat melihat informasi ruangan terlebih dahulu.
-                    Untuk mengajukan peminjaman, pengguna perlu login.
+                    Pilih ruangan, tentukan jadwal, lalu lengkapi data
+                    pengajuan sebelum dikirim.
                 </p>
 
             </div>
@@ -407,6 +455,9 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 20px;
             ">
+
+
+                <!-- STEP 1 -->
 
                 <div style="
                     background: #ffffff;
@@ -430,6 +481,7 @@
                         1
                     </div>
 
+
                     <h3 style="
                         font-size: 18px;
                         margin-bottom: 8px;
@@ -437,15 +489,18 @@
                         Pilih Ruangan
                     </h3>
 
+
                     <p style="
                         font-size: 14px;
                         color: #697489;
                     ">
-                        Lihat empat ruangan dan detail unit yang tersedia.
+                        Tentukan ruangan yang sesuai dengan kebutuhan kegiatan.
                     </p>
 
                 </div>
 
+
+                <!-- STEP 2 -->
 
                 <div style="
                     background: #ffffff;
@@ -469,22 +524,26 @@
                         2
                     </div>
 
+
                     <h3 style="
                         font-size: 18px;
                         margin-bottom: 8px;
                     ">
-                        Login & Ajukan
+                        Tentukan Jadwal
                     </h3>
+
 
                     <p style="
                         font-size: 14px;
                         color: #697489;
                     ">
-                        Login, lengkapi data diri, kemudian tentukan unit dan jadwal.
+                        Pilih tanggal dan waktu yang masih tersedia.
                     </p>
 
                 </div>
 
+
+                <!-- STEP 3 -->
 
                 <div style="
                     background: #ffffff;
@@ -508,18 +567,20 @@
                         3
                     </div>
 
+
                     <h3 style="
                         font-size: 18px;
                         margin-bottom: 8px;
                     ">
-                        Tunggu Persetujuan
+                        Kirim Pengajuan
                     </h3>
+
 
                     <p style="
                         font-size: 14px;
                         color: #697489;
                     ">
-                        Admin memeriksa pengajuan dan menentukan apakah pengajuan disetujui atau ditolak.
+                        Lengkapi data yang diperlukan dan kirim pengajuan untuk diproses.
                     </p>
 
                 </div>
@@ -531,7 +592,13 @@
     </section>
 
 
-    <section style="padding: 10px 0 70px;">
+    <!-- =========================
+         CTA
+    ========================== -->
+
+    <section style="
+        padding: 10px 0 70px;
+    ">
 
         <div class="container">
 
@@ -546,27 +613,30 @@
                 gap: 30px;
             ">
 
+
                 <div>
 
                     <h2 style="
                         font-size: 30px;
                         margin-bottom: 8px;
                     ">
-                        Siap mengajukan peminjaman?
+                        Siap menggunakan ruangan?
                     </h2>
 
+
                     <p style="color: #d8f2e9;">
-                        Login terlebih dahulu untuk melakukan pengajuan peminjaman ruang.
+                        Pilih ruangan dan jadwal yang sesuai untuk kegiatan Anda.
                     </p>
 
                 </div>
+
 
                 <a href="/login" class="btn" style="
                     background: #ffffff;
                     color: #006e53;
                     flex-shrink: 0;
                 ">
-                    Login untuk Mengajukan
+                    Ajukan Peminjaman
                 </a>
 
             </div>

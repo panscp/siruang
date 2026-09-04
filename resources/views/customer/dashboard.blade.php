@@ -25,9 +25,9 @@
 
     <div class="container">
 
-        {{-- =========================
+        <!-- =========================
              HEADER
-        ========================== --}}
+        ========================== -->
 
         <div class="dashboard-header">
 
@@ -37,15 +37,19 @@
                     SIRUANG
                 </div>
 
+
                 <h1>
                     Selamat datang, {{ auth()->user()->name }}
                 </h1>
 
+
                 <p>
-                    Kelola pengajuan peminjaman ruangan Anda dari satu halaman.
+                    Pantau pengajuan peminjaman ruangan dan ajukan
+                    kebutuhan kegiatan Anda melalui SIRUANG.
                 </p>
 
             </div>
+
 
             <a
                 href="{{ route('booking.create') }}"
@@ -57,11 +61,13 @@
         </div>
 
 
-        {{-- =========================
+        <!-- =========================
              SUMMARY
-        ========================== --}}
+        ========================== -->
 
         <div class="summary-grid">
+
+            <!-- TOTAL -->
 
             <div class="summary-card">
 
@@ -69,16 +75,20 @@
                     Total Pengajuan
                 </div>
 
+
                 <div class="summary-value">
                     {{ $totalBookings }}
                 </div>
 
+
                 <div class="summary-description">
-                    Seluruh pengajuan yang pernah dibuat
+                    Jumlah seluruh pengajuan yang pernah dibuat
                 </div>
 
             </div>
 
+
+            <!-- MENUNGGU -->
 
             <div class="summary-card">
 
@@ -86,16 +96,20 @@
                     Menunggu
                 </div>
 
+
                 <div class="summary-value">
                     {{ $waitingBookings }}
                 </div>
 
+
                 <div class="summary-description">
-                    Pengajuan yang masih diperiksa admin
+                    Pengajuan yang sedang menunggu pemeriksaan
                 </div>
 
             </div>
 
+
+            <!-- DISETUJUI -->
 
             <div class="summary-card">
 
@@ -103,12 +117,14 @@
                     Disetujui
                 </div>
 
+
                 <div class="summary-value">
                     {{ $approvedBookings }}
                 </div>
 
+
                 <div class="summary-description">
-                    Pengajuan yang sudah disetujui
+                    Pengajuan yang telah mendapatkan persetujuan
                 </div>
 
             </div>
@@ -116,11 +132,16 @@
         </div>
 
 
-        {{-- =========================
-             LATEST BOOKING
-        ========================== --}}
+        <!-- =========================
+             MAIN DASHBOARD
+        ========================== -->
 
         <div class="dashboard-grid">
+
+
+            <!-- =========================
+                 LATEST BOOKING
+            ========================== -->
 
             <div class="dashboard-card">
 
@@ -133,18 +154,21 @@
                         </h2>
 
                         <p>
-                            Informasi pengajuan terakhir Anda.
+                            Ringkasan pengajuan peminjaman terakhir Anda.
                         </p>
 
                     </div>
 
+
                     @if ($latestBooking)
+
                         <a
                             href="{{ route('customer.history') }}"
                             class="text-link"
                         >
                             Lihat Semua
                         </a>
+
                     @endif
 
                 </div>
@@ -153,6 +177,7 @@
                 @if ($latestBooking)
 
                     @php
+
                         $statusLabel =
                             $statusLabels[$latestBooking->status]
                             ?? ucfirst($latestBooking->status);
@@ -160,10 +185,14 @@
                         $statusClass =
                             $statusClasses[$latestBooking->status]
                             ?? 'status-waiting';
+
                     @endphp
 
 
                     <div class="latest-booking">
+
+
+                        <!-- BOOKING HEADER -->
 
                         <div class="latest-booking-top">
 
@@ -172,6 +201,7 @@
                                 <div class="booking-code-label">
                                     Kode Pengajuan
                                 </div>
+
 
                                 <div class="booking-code">
                                     {{ $latestBooking->booking_code }}
@@ -190,18 +220,26 @@
                         </div>
 
 
+                        <!-- ROOM -->
+
                         <div class="latest-room">
                             {{ $latestBooking->unit->room->name }}
                         </div>
 
 
+                        <!-- DETAIL -->
+
                         <div class="latest-info-grid">
+
+
+                            <!-- TANGGAL -->
 
                             <div class="latest-info">
 
                                 <span>
                                     Tanggal
                                 </span>
+
 
                                 <strong>
                                     {{ $latestBooking->start_date->translatedFormat('d F Y') }}
@@ -210,11 +248,14 @@
                             </div>
 
 
+                            <!-- WAKTU -->
+
                             <div class="latest-info">
 
                                 <span>
                                     Waktu
                                 </span>
+
 
                                 <strong>
                                     {{ substr($latestBooking->start_time, 0, 5) }}
@@ -225,11 +266,14 @@
                             </div>
 
 
+                            <!-- KEGIATAN -->
+
                             <div class="latest-info">
 
                                 <span>
                                     Kegiatan
                                 </span>
+
 
                                 <strong>
                                     {{ $latestBooking->event_name }}
@@ -240,12 +284,15 @@
                         </div>
 
 
+                        <!-- FOOTER -->
+
                         <div class="latest-footer">
 
                             <span>
                                 Diajukan
                                 {{ $latestBooking->created_at->translatedFormat('d F Y, H:i') }}
                             </span>
+
 
                             <a
                                 href="{{ route('booking.show', $latestBooking) }}"
@@ -258,7 +305,11 @@
 
                     </div>
 
+
                 @else
+
+
+                    <!-- EMPTY STATE -->
 
                     <div class="empty-state">
 
@@ -266,20 +317,23 @@
                             +
                         </div>
 
+
                         <h3>
                             Belum Ada Pengajuan
                         </h3>
 
+
                         <p>
-                            Anda belum memiliki pengajuan peminjaman ruangan.
+                            Belum ada pengajuan peminjaman yang dibuat.
+                            Ajukan peminjaman untuk mulai menggunakan layanan SIRUANG.
                         </p>
+
 
                         <a
                             href="{{ route('booking.create') }}"
                             class="btn btn-primary"
                         >
-                            Buat Pengajuan
-
+                            Ajukan Peminjaman
                         </a>
 
                     </div>
@@ -289,9 +343,9 @@
             </div>
 
 
-            {{-- =========================
+            <!-- =========================
                  QUICK ACTION
-            ========================== --}}
+            ========================== -->
 
             <div class="dashboard-card">
 
@@ -304,7 +358,7 @@
                         </h2>
 
                         <p>
-                            Menu yang sering digunakan.
+                            Gunakan menu berikut untuk mengelola peminjaman Anda.
                         </p>
 
                     </div>
@@ -313,6 +367,9 @@
 
 
                 <div class="quick-actions">
+
+
+                    <!-- AJUKAN -->
 
                     <a
                         href="{{ route('booking.create') }}"
@@ -323,6 +380,7 @@
                             +
                         </div>
 
+
                         <div>
 
                             <strong>
@@ -330,13 +388,15 @@
                             </strong>
 
                             <span>
-                                Buat pengajuan ruangan baru
+                                Pilih ruangan dan jadwal peminjaman
                             </span>
 
                         </div>
 
                     </a>
 
+
+                    <!-- RIWAYAT -->
 
                     <a
                         href="{{ route('customer.history') }}"
@@ -347,6 +407,7 @@
                             ≡
                         </div>
 
+
                         <div>
 
                             <strong>
@@ -354,13 +415,15 @@
                             </strong>
 
                             <span>
-                                Lihat seluruh pengajuan Anda
+                                Lihat status dan detail pengajuan
                             </span>
 
                         </div>
 
                     </a>
 
+
+                    <!-- PROFIL -->
 
                     <a
                         href="{{ route('customer.profile') }}"
@@ -371,14 +434,15 @@
                             ○
                         </div>
 
+
                         <div>
 
                             <strong>
-                                Profil
+                                Profil Saya
                             </strong>
 
                             <span>
-                                Kelola informasi akun
+                                Kelola informasi akun Anda
                             </span>
 
                         </div>
@@ -395,12 +459,14 @@
 
 </section>
 
-@endsection
-
 
 @push('styles')
 
 <style>
+
+    /* =========================
+       DASHBOARD
+    ========================== */
 
     .dashboard-section {
         padding: 45px 20px 70px;
@@ -414,7 +480,6 @@
 
     .dashboard-header {
         display: flex;
-
         align-items: flex-end;
         justify-content: space-between;
 
@@ -448,6 +513,8 @@
 
     .dashboard-header p {
         margin: 0;
+
+        max-width: 680px;
 
         color: #687388;
 
@@ -517,7 +584,7 @@
 
 
     /* =========================
-       GRID
+       MAIN GRID
     ========================== */
 
     .dashboard-grid {
@@ -547,6 +614,10 @@
     }
 
 
+    /* =========================
+       CARD HEADER
+    ========================== */
+
     .card-header {
         display: flex;
 
@@ -574,6 +645,7 @@
         color: #788397;
 
         font-size: 12px;
+        line-height: 1.5;
     }
 
 
@@ -664,35 +736,30 @@
 
     .status-waiting {
         background: #fff7df;
-
         color: #946c00;
     }
 
 
     .status-approved {
         background: #eef8f4;
-
         color: #007754;
     }
 
 
     .status-rejected {
         background: #fff1f1;
-
         color: #a33a3a;
     }
 
 
     .status-finished {
         background: #eef2f7;
-
         color: #536078;
     }
 
 
     .status-cancelled {
         background: #f3f4f4;
-
         color: #6d7474;
     }
 
@@ -843,11 +910,13 @@
         color: #8a94a3;
 
         font-size: 10px;
+
+        line-height: 1.5;
     }
 
 
     /* =========================
-       EMPTY
+       EMPTY STATE
     ========================== */
 
     .empty-state {
@@ -894,11 +963,15 @@
 
 
     .empty-state p {
-        margin: 0 0 18px;
+        max-width: 430px;
+
+        margin: 0 auto 18px;
 
         color: #788397;
 
         font-size: 12px;
+
+        line-height: 1.6;
     }
 
 
@@ -981,3 +1054,5 @@
 </style>
 
 @endpush
+
+@endsection

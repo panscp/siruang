@@ -301,7 +301,11 @@
                                     Jam Mulai
                                 </label>
 
-                                <div class="time-picker" data-time-picker>
+                                <div
+                                    class="time-picker"
+                                    data-time-picker
+                                    data-time-picker-id="start"
+                                >
 
                                     <input
                                         type="hidden"
@@ -316,21 +320,16 @@
                                         aria-haspopup="dialog"
                                         aria-expanded="false"
                                     >
-                                        <span class="time-picker-value-group">
-                                            <span
-                                                id="start-time-label"
-                                                class="time-picker-value placeholder"
-                                            >
-                                                Pilih jam
-                                            </span>
-
-                                            <span
-                                                id="start-time-period"
-                                                class="time-picker-period"
-                                            ></span>
+                                        <span
+                                            id="start-time-label"
+                                            class="time-picker-value placeholder"
+                                        >
+                                            Pilih jam
                                         </span>
 
-                                        <span class="time-picker-icon">⌄</span>
+                                        <span class="time-picker-icon">
+                                            ▾
+                                        </span>
                                     </button>
 
                                     <div
@@ -338,51 +337,117 @@
                                         class="time-picker-panel"
                                         hidden
                                     >
+
                                         <div class="time-picker-panel-title">
                                             Pilih jam mulai
                                         </div>
 
                                         <div class="time-picker-panel-subtitle">
-                                            Pilih jam, lalu menit.
+                                            Geser roda jam dan menit, lalu pilih AM / PM.
                                         </div>
 
-                                        <div class="time-picker-section-label">
-                                            Jam
-                                        </div>
+                                        <div class="time-picker-wheels">
 
-                                        <div
-                                            class="time-hour-grid"
-                                            data-time-hours
-                                        >
-                                            @for ($hour = 0; $hour < 24; $hour++)
-                                                <button
-                                                    type="button"
-                                                    class="time-option time-hour-option"
-                                                    data-hour="{{ sprintf('%02d', $hour) }}"
+                                            <div class="time-wheel-column">
+
+                                                <div class="time-wheel-label">
+                                                    Jam
+                                                </div>
+
+                                                <div
+                                                    class="time-wheel"
+                                                    data-wheel="hour"
+                                                    tabindex="0"
                                                 >
-                                                    {{ sprintf('%02d', $hour) }}
-                                                </button>
-                                            @endfor
-                                        </div>
+                                                    <div class="time-wheel-spacer"></div>
 
-                                        <div class="time-picker-section-label">
-                                            Menit
-                                        </div>
+                                                    @for ($hour = 1; $hour <= 12; $hour++)
+                                                        <button
+                                                            type="button"
+                                                            class="time-wheel-item"
+                                                            data-value="{{ sprintf('%02d', $hour) }}"
+                                                        >
+                                                            {{ sprintf('%02d', $hour) }}
+                                                        </button>
+                                                    @endfor
 
-                                        <div
-                                            class="time-minute-scroll"
-                                            data-time-minutes
-                                        >
-                                            @for ($minute = 0; $minute < 60; $minute++)
-                                                <button
-                                                    type="button"
-                                                    class="time-option time-minute-option"
-                                                    data-minute="{{ sprintf('%02d', $minute) }}"
+                                                    <div class="time-wheel-spacer"></div>
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="time-wheel-separator">
+                                                :
+                                            </div>
+
+
+                                            <div class="time-wheel-column">
+
+                                                <div class="time-wheel-label">
+                                                    Menit
+                                                </div>
+
+                                                <div
+                                                    class="time-wheel"
+                                                    data-wheel="minute"
+                                                    tabindex="0"
                                                 >
-                                                    {{ sprintf('%02d', $minute) }}
-                                                </button>
-                                            @endfor
+                                                    <div class="time-wheel-spacer"></div>
+
+                                                    @for ($minute = 0; $minute < 60; $minute++)
+                                                        <button
+                                                            type="button"
+                                                            class="time-wheel-item"
+                                                            data-value="{{ sprintf('%02d', $minute) }}"
+                                                        >
+                                                            {{ sprintf('%02d', $minute) }}
+                                                        </button>
+                                                    @endfor
+
+                                                    <div class="time-wheel-spacer"></div>
+                                                </div>
+
+                                            </div>
+
                                         </div>
+
+
+                                        <div class="time-wheel-selection-line"></div>
+
+
+                                        <div class="time-period-label">
+                                            Periode
+                                        </div>
+
+                                        <div class="time-period-options">
+
+                                            <button
+                                                type="button"
+                                                class="time-period-option"
+                                                data-period="AM"
+                                            >
+                                                AM
+                                            </button>
+
+                                            <button
+                                                type="button"
+                                                class="time-period-option"
+                                                data-period="PM"
+                                            >
+                                                PM
+                                            </button>
+
+                                        </div>
+
+
+                                        <button
+                                            type="button"
+                                            class="time-confirm-button"
+                                        >
+                                            Pilih waktu
+                                        </button>
+
                                     </div>
 
                                 </div>
@@ -397,7 +462,11 @@
                                     Jam Selesai
                                 </label>
 
-                                <div class="time-picker" data-time-picker>
+                                <div
+                                    class="time-picker"
+                                    data-time-picker
+                                    data-time-picker-id="end"
+                                >
 
                                     <input
                                         type="hidden"
@@ -412,21 +481,16 @@
                                         aria-haspopup="dialog"
                                         aria-expanded="false"
                                     >
-                                        <span class="time-picker-value-group">
-                                            <span
-                                                id="end-time-label"
-                                                class="time-picker-value placeholder"
-                                            >
-                                                Pilih jam
-                                            </span>
-
-                                            <span
-                                                id="end-time-period"
-                                                class="time-picker-period"
-                                            ></span>
+                                        <span
+                                            id="end-time-label"
+                                            class="time-picker-value placeholder"
+                                        >
+                                            Pilih jam
                                         </span>
 
-                                        <span class="time-picker-icon">⌄</span>
+                                        <span class="time-picker-icon">
+                                            ▾
+                                        </span>
                                     </button>
 
                                     <div
@@ -434,51 +498,117 @@
                                         class="time-picker-panel"
                                         hidden
                                     >
+
                                         <div class="time-picker-panel-title">
                                             Pilih jam selesai
                                         </div>
 
                                         <div class="time-picker-panel-subtitle">
-                                            Pilih jam, lalu menit.
+                                            Geser roda jam dan menit, lalu pilih AM / PM.
                                         </div>
 
-                                        <div class="time-picker-section-label">
-                                            Jam
-                                        </div>
+                                        <div class="time-picker-wheels">
 
-                                        <div
-                                            class="time-hour-grid"
-                                            data-time-hours
-                                        >
-                                            @for ($hour = 0; $hour < 24; $hour++)
-                                                <button
-                                                    type="button"
-                                                    class="time-option time-hour-option"
-                                                    data-hour="{{ sprintf('%02d', $hour) }}"
+                                            <div class="time-wheel-column">
+
+                                                <div class="time-wheel-label">
+                                                    Jam
+                                                </div>
+
+                                                <div
+                                                    class="time-wheel"
+                                                    data-wheel="hour"
+                                                    tabindex="0"
                                                 >
-                                                    {{ sprintf('%02d', $hour) }}
-                                                </button>
-                                            @endfor
-                                        </div>
+                                                    <div class="time-wheel-spacer"></div>
 
-                                        <div class="time-picker-section-label">
-                                            Menit
-                                        </div>
+                                                    @for ($hour = 1; $hour <= 12; $hour++)
+                                                        <button
+                                                            type="button"
+                                                            class="time-wheel-item"
+                                                            data-value="{{ sprintf('%02d', $hour) }}"
+                                                        >
+                                                            {{ sprintf('%02d', $hour) }}
+                                                        </button>
+                                                    @endfor
 
-                                        <div
-                                            class="time-minute-scroll"
-                                            data-time-minutes
-                                        >
-                                            @for ($minute = 0; $minute < 60; $minute++)
-                                                <button
-                                                    type="button"
-                                                    class="time-option time-minute-option"
-                                                    data-minute="{{ sprintf('%02d', $minute) }}"
+                                                    <div class="time-wheel-spacer"></div>
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="time-wheel-separator">
+                                                :
+                                            </div>
+
+
+                                            <div class="time-wheel-column">
+
+                                                <div class="time-wheel-label">
+                                                    Menit
+                                                </div>
+
+                                                <div
+                                                    class="time-wheel"
+                                                    data-wheel="minute"
+                                                    tabindex="0"
                                                 >
-                                                    {{ sprintf('%02d', $minute) }}
-                                                </button>
-                                            @endfor
+                                                    <div class="time-wheel-spacer"></div>
+
+                                                    @for ($minute = 0; $minute < 60; $minute++)
+                                                        <button
+                                                            type="button"
+                                                            class="time-wheel-item"
+                                                            data-value="{{ sprintf('%02d', $minute) }}"
+                                                        >
+                                                            {{ sprintf('%02d', $minute) }}
+                                                        </button>
+                                                    @endfor
+
+                                                    <div class="time-wheel-spacer"></div>
+                                                </div>
+
+                                            </div>
+
                                         </div>
+
+
+                                        <div class="time-wheel-selection-line"></div>
+
+
+                                        <div class="time-period-label">
+                                            Periode
+                                        </div>
+
+                                        <div class="time-period-options">
+
+                                            <button
+                                                type="button"
+                                                class="time-period-option"
+                                                data-period="AM"
+                                            >
+                                                AM
+                                            </button>
+
+                                            <button
+                                                type="button"
+                                                class="time-period-option"
+                                                data-period="PM"
+                                            >
+                                                PM
+                                            </button>
+
+                                        </div>
+
+
+                                        <button
+                                            type="button"
+                                            class="time-confirm-button"
+                                        >
+                                            Pilih waktu
+                                        </button>
+
                                     </div>
 
                                 </div>
@@ -1553,6 +1683,7 @@
 
     .time-picker {
         position: relative;
+        width: 100%;
     }
 
     .time-picker-trigger {
@@ -1562,7 +1693,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 12px;
+        gap: 10px;
 
         padding: 11px 13px;
 
@@ -1593,11 +1724,9 @@
 
     .time-picker-icon {
         flex-shrink: 0;
-
         color: #687388;
-        font-size: 16px;
+        font-size: 14px;
         line-height: 1;
-
         transition: transform 0.2s ease;
     }
 
@@ -1611,7 +1740,7 @@
         left: 0;
         right: 0;
 
-        z-index: 50;
+        z-index: 80;
 
         padding: 15px;
 
@@ -1629,104 +1758,216 @@
 
     .time-picker-panel-title {
         color: #101a2e;
-
         font-size: 13px;
         font-weight: 800;
     }
 
     .time-picker-panel-subtitle {
         margin-top: 2px;
-
         color: #788397;
         font-size: 11px;
+        line-height: 1.5;
     }
 
-    .time-picker-section-label {
-        margin: 14px 0 8px;
+    .time-picker-wheels {
+        position: relative;
 
-        color: #687388;
-        font-size: 11px;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.03em;
-    }
-
-    .time-hour-grid {
         display: grid;
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-        gap: 6px;
+        grid-template-columns: minmax(0, 1fr) 18px minmax(0, 1fr);
+
+        align-items: center;
+
+        margin-top: 14px;
     }
 
-    .time-picker-value-group {
-        display: inline-flex;
-        align-items: baseline;
-        gap: 6px;
+    .time-wheel-column {
         min-width: 0;
     }
 
-    .time-picker-period {
+    .time-wheel-label,
+    .time-period-label {
+        margin-bottom: 7px;
+
         color: #687388;
-        font-size: 11px;
+
+        font-size: 10px;
         font-weight: 800;
         text-transform: uppercase;
+        letter-spacing: 0.04em;
+
+        text-align: center;
+    }
+
+    .time-wheel-separator {
+        padding-top: 19px;
+
+        color: #26324a;
+
+        font-size: 18px;
+        font-weight: 800;
+        text-align: center;
+    }
+
+    .time-wheel {
+        position: relative;
+
+        height: 126px;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        scroll-snap-type: y mandatory;
+        overscroll-behavior: contain;
+
+        scrollbar-width: thin;
+        scrollbar-color: #b8cec5 transparent;
+
+        border-radius: 12px;
+
+        background: #f7faf9;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .time-wheel::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .time-wheel::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .time-wheel::-webkit-scrollbar-thumb {
+        background: #b8cec5;
+        border-radius: 10px;
+    }
+
+    .time-wheel-spacer {
+        height: 45px;
         flex-shrink: 0;
     }
 
-    .time-minute-scroll {
-        max-height: 150px;
-        overflow-y: auto;
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 6px;
-        padding-right: 4px;
+    .time-wheel-item {
+        width: 100%;
+        height: 36px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 0;
+
+        border: none;
+        background: transparent;
+
+        color: #788397;
+
+        font-size: 13px;
+        font-weight: 700;
+
+        scroll-snap-align: center;
+
+        cursor: pointer;
+        transition:
+            color 0.15s ease,
+            background 0.15s ease,
+            transform 0.15s ease;
     }
 
-    .time-minute-scroll::-webkit-scrollbar {
-        width: 6px;
+    .time-wheel-item:hover {
+        color: #008f6b;
     }
 
-    .time-minute-scroll::-webkit-scrollbar-track {
-        background: #f1f5f3;
-        border-radius: 10px;
+    .time-wheel-item.selected {
+        color: #008f6b;
+        font-size: 15px;
+        font-weight: 800;
     }
 
-    .time-minute-scroll::-webkit-scrollbar-thumb {
-        background: #c4d7d0;
-        border-radius: 10px;
-    }
+    .time-wheel-selection-line {
+        pointer-events: none;
 
-    .time-minute-scroll::-webkit-scrollbar-thumb:hover {
-        background: #9bbbae;
-    }
+        position: absolute;
 
-    .time-option {
-        min-height: 34px;
+        left: 15px;
+        right: 15px;
 
-        padding: 6px 4px;
+        top: 95px;
 
-        border: 1px solid #e0e7e4;
+        height: 36px;
+
+        border-top: 1px solid #b9dacc;
+        border-bottom: 1px solid #b9dacc;
         border-radius: 8px;
+
+        background: rgba(238, 248, 244, 0.35);
+    }
+
+    .time-period-label {
+        margin-top: 14px;
+    }
+
+    .time-period-options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .time-period-option {
+        min-height: 38px;
+
+        border: 1px solid #dce5e1;
+        border-radius: 9px;
 
         background: #ffffff;
         color: #465169;
 
         font-size: 12px;
-        font-weight: 700;
+        font-weight: 800;
 
         cursor: pointer;
         transition: 0.15s ease;
     }
 
-    .time-option:hover {
+    .time-period-option:hover {
         border-color: #9bcdbd;
         background: #f3f9f6;
         color: #008f6b;
     }
 
-    .time-option.selected {
+    .time-period-option.selected {
         border-color: #008f6b;
         background: #008f6b;
         color: #ffffff;
+    }
+
+    .time-confirm-button {
+        width: 100%;
+
+        margin-top: 12px;
+
+        min-height: 40px;
+
+        border: 1px solid #008f6b;
+        border-radius: 9px;
+
+        background: #008f6b;
+        color: #ffffff;
+
+        font-size: 12px;
+        font-weight: 800;
+
+        cursor: pointer;
+        transition: 0.15s ease;
+    }
+
+    .time-confirm-button:hover {
+        background: #007957;
+    }
+
+    .time-confirm-button:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
     }
 
     .form-grid {
@@ -2784,104 +3025,254 @@ document.addEventListener('DOMContentLoaded', function () {
         );
 
 
-    const startTimePeriod =
-        document.getElementById(
-            'start-time-period'
-        );
-
-
-    const endTimePeriod =
-        document.getElementById(
-            'end-time-period'
-        );
-
-
     function setupTimePicker({
+        picker,
         input,
         trigger,
         panel,
-        label,
-        period
+        label
     }) {
 
-        let selectedHour = '';
-        let selectedMinute = '';
+        const hourWheel =
+            picker.querySelector(
+                '[data-wheel="hour"]'
+            );
+
+        const minuteWheel =
+            picker.querySelector(
+                '[data-wheel="minute"]'
+            );
+
+        const hourItems =
+            Array.from(
+                hourWheel.querySelectorAll(
+                    '.time-wheel-item'
+                )
+            );
+
+        const minuteItems =
+            Array.from(
+                minuteWheel.querySelectorAll(
+                    '.time-wheel-item'
+                )
+            );
+
+        const periodButtons =
+            Array.from(
+                picker.querySelectorAll(
+                    '.time-period-option'
+                )
+            );
+
+        const confirmButton =
+            picker.querySelector(
+                '.time-confirm-button'
+            );
 
 
-        function syncSelectedButtons() {
+        const itemHeight = 36;
 
-            panel
-                .querySelectorAll('[data-hour]')
-                .forEach(
-                    function (button) {
+        let selectedHour = '12';
+        let selectedMinute = '00';
+        let selectedPeriod = 'AM';
 
-                        button.classList.toggle(
-                            'selected',
-                            button.dataset.hour ===
-                                selectedHour
+
+        function updateWheelSelection(
+            wheel,
+            items
+        ) {
+
+            const rawIndex =
+                Math.round(
+                    wheel.scrollTop /
+                    itemHeight
+                );
+
+            const index =
+                Math.max(
+                    0,
+                    Math.min(
+                        items.length - 1,
+                        rawIndex
+                    )
+                );
+
+
+            items.forEach(
+                function (item, itemIndex) {
+
+                    item.classList.toggle(
+                        'selected',
+                        itemIndex === index
+                    );
+
+                }
+            );
+
+
+            return items[index]?.dataset.value
+                ?? '';
+
+        }
+
+
+        function scrollToValue(
+            wheel,
+            items,
+            value
+        ) {
+
+            const index =
+                items.findIndex(
+                    function (item) {
+
+                        return (
+                            item.dataset.value ===
+                            value
                         );
 
                     }
                 );
 
 
-            panel
-                .querySelectorAll('[data-minute]')
-                .forEach(
-                    function (button) {
+            if (index < 0) {
+                return;
+            }
 
-                        button.classList.toggle(
-                            'selected',
-                            button.dataset.minute ===
-                                selectedMinute
-                        );
 
-                    }
+            wheel.scrollTo({
+                top:
+                    index * itemHeight,
+                behavior:
+                    'auto'
+            });
+
+
+            items.forEach(
+                function (item, itemIndex) {
+
+                    item.classList.toggle(
+                        'selected',
+                        itemIndex === index
+                    );
+
+                }
+            );
+
+        }
+
+
+        function updatePeriodSelection() {
+
+            periodButtons.forEach(
+                function (button) {
+
+                    button.classList.toggle(
+                        'selected',
+                        button.dataset.period ===
+                        selectedPeriod
+                    );
+
+                }
+            );
+
+        }
+
+
+        function setDraftFromInput() {
+
+            if (
+                !input.value
+            ) {
+
+                selectedHour = '12';
+                selectedMinute = '00';
+                selectedPeriod = 'AM';
+
+                return;
+
+            }
+
+
+            const parts =
+                input.value.split(':');
+
+            const hour24 =
+                parseInt(
+                    parts[0],
+                    10
+                );
+
+            const minute =
+                parts[1] ?? '00';
+
+
+            if (
+                Number.isNaN(hour24)
+            ) {
+
+                selectedHour = '12';
+                selectedMinute = '00';
+                selectedPeriod = 'AM';
+
+                return;
+
+            }
+
+
+            selectedPeriod =
+                hour24 >= 12
+                    ? 'PM'
+                    : 'AM';
+
+
+            let hour12 =
+                hour24 % 12;
+
+
+            if (
+                hour12 === 0
+            ) {
+
+                hour12 = 12;
+
+            }
+
+
+            selectedHour =
+                String(
+                    hour12
+                ).padStart(
+                    2,
+                    '0'
+                );
+
+            selectedMinute =
+                minute.padStart(
+                    2,
+                    '0'
                 );
 
         }
 
 
-        function openPicker() {
+        function syncVisuals() {
 
-            document
-                .querySelectorAll('.time-picker-panel')
-                .forEach(
-                    function (otherPanel) {
-
-                        if (otherPanel !== panel) {
-                            otherPanel.hidden = true;
-                        }
-
-                    }
-                );
-
-
-            document
-                .querySelectorAll('.time-picker-trigger')
-                .forEach(
-                    function (otherTrigger) {
-
-                        if (otherTrigger !== trigger) {
-                            otherTrigger.classList.remove('open');
-                            otherTrigger.setAttribute(
-                                'aria-expanded',
-                                'false'
-                            );
-                        }
-
-                    }
-                );
-
-
-            panel.hidden = false;
-            trigger.classList.add('open');
-            trigger.setAttribute(
-                'aria-expanded',
-                'true'
+            scrollToValue(
+                hourWheel,
+                hourItems,
+                selectedHour
             );
 
-            syncSelectedButtons();
+
+            scrollToValue(
+                minuteWheel,
+                minuteItems,
+                selectedMinute
+            );
+
+
+            updatePeriodSelection();
 
         }
 
@@ -2889,7 +3280,11 @@ document.addEventListener('DOMContentLoaded', function () {
         function closePicker() {
 
             panel.hidden = true;
-            trigger.classList.remove('open');
+
+            trigger.classList.remove(
+                'open'
+            );
+
             trigger.setAttribute(
                 'aria-expanded',
                 'false'
@@ -2898,182 +3293,440 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
 
+        function openPicker() {
+
+            document
+                .querySelectorAll(
+                    '.time-picker-panel'
+                )
+                .forEach(
+                    function (otherPanel) {
+
+                        if (
+                            otherPanel !==
+                            panel
+                        ) {
+
+                            otherPanel.hidden =
+                                true;
+
+                        }
+
+                    }
+                );
+
+
+            document
+                .querySelectorAll(
+                    '.time-picker-trigger'
+                )
+                .forEach(
+                    function (otherTrigger) {
+
+                        if (
+                            otherTrigger !==
+                            trigger
+                        ) {
+
+                            otherTrigger
+                                .classList
+                                .remove(
+                                    'open'
+                                );
+
+                            otherTrigger
+                                .setAttribute(
+                                    'aria-expanded',
+                                    'false'
+                                );
+
+                        }
+
+                    }
+                );
+
+
+            setDraftFromInput();
+
+            panel.hidden = false;
+
+            trigger.classList.add(
+                'open'
+            );
+
+            trigger.setAttribute(
+                'aria-expanded',
+                'true'
+            );
+
+
+            requestAnimationFrame(
+                function () {
+
+                    syncVisuals();
+
+                }
+            );
+
+        }
+
+
         trigger.addEventListener(
             'click',
-            function (event) {
+            function () {
 
-                event.stopPropagation();
+                if (
+                    panel.hidden
+                ) {
 
-                if (panel.hidden) {
                     openPicker();
+
                 } else {
+
                     closePicker();
+
                 }
 
             }
         );
 
 
-        panel
-            .querySelectorAll('[data-hour]')
-            .forEach(
-                function (button) {
+        hourWheel.addEventListener(
+            'scroll',
+            function () {
 
-                    button.addEventListener(
-                        'click',
-                        function () {
-
-                            selectedHour =
-                                button.dataset.hour;
-
-                            syncSelectedButtons();
-
-                        }
+                selectedHour =
+                    updateWheelSelection(
+                        hourWheel,
+                        hourItems
                     );
 
-                }
-            );
+            },
+            {
+                passive: true
+            }
+        );
 
 
-        panel
-            .querySelectorAll('[data-minute]')
-            .forEach(
-                function (button) {
+        minuteWheel.addEventListener(
+            'scroll',
+            function () {
 
-                    button.addEventListener(
-                        'click',
-                        function () {
-
-                            selectedMinute =
-                                button.dataset.minute;
-
-
-                            if (
-                                selectedHour === ''
-                            ) {
-
-                                return;
-
-                            }
-
-
-                            input.value =
-                                selectedHour
-                                + ':'
-                                + selectedMinute;
-
-
-                            const hourNumber =
-                                parseInt(
-                                    selectedHour,
-                                    10
-                                );
-
-
-                            let displayHour =
-                                hourNumber % 12;
-
-
-                            if (
-                                displayHour === 0
-                            ) {
-
-                                displayHour = 12;
-
-                            }
-
-
-                            const displayTime =
-                                String(
-                                    displayHour
-                                ).padStart(
-                                    2,
-                                    '0'
-                                )
-                                + ':'
-                                + selectedMinute;
-
-
-                            const displayPeriod =
-                                hourNumber >= 12
-                                    ? 'PM'
-                                    : 'AM';
-
-
-                            label.textContent =
-                                displayTime;
-
-
-                            period.textContent =
-                                displayPeriod;
-
-
-                            label.classList.remove(
-                                'placeholder'
-                            );
-
-
-                            input.dispatchEvent(
-                                new Event(
-                                    'change',
-                                    {
-                                        bubbles: true
-                                    }
-                                )
-                            );
-
-
-                            syncSelectedButtons();
-
-                            closePicker();
-
-                        }
+                selectedMinute =
+                    updateWheelSelection(
+                        minuteWheel,
+                        minuteItems
                     );
 
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        hourItems.forEach(
+            function (item) {
+
+                item.addEventListener(
+                    'click',
+                    function () {
+
+                        selectedHour =
+                            item.dataset.value;
+
+                        scrollToValue(
+                            hourWheel,
+                            hourItems,
+                            selectedHour
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        minuteItems.forEach(
+            function (item) {
+
+                item.addEventListener(
+                    'click',
+                    function () {
+
+                        selectedMinute =
+                            item.dataset.value;
+
+                        scrollToValue(
+                            minuteWheel,
+                            minuteItems,
+                            selectedMinute
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        periodButtons.forEach(
+            function (button) {
+
+                button.addEventListener(
+                    'click',
+                    function () {
+
+                        selectedPeriod =
+                            button.dataset.period;
+
+                        updatePeriodSelection();
+
+                    }
+                );
+
+            }
+        );
+
+
+        confirmButton.addEventListener(
+            'click',
+            function () {
+
+                if (
+                    !selectedHour ||
+                    !selectedMinute ||
+                    !selectedPeriod
+                ) {
+
+                    return;
+
                 }
-            );
+
+
+                let hour24 =
+                    parseInt(
+                        selectedHour,
+                        10
+                    );
+
+
+                if (
+                    selectedPeriod ===
+                    'AM'
+                ) {
+
+                    if (
+                        hour24 === 12
+                    ) {
+
+                        hour24 = 0;
+
+                    }
+
+                } else {
+
+                    if (
+                        hour24 !== 12
+                    ) {
+
+                        hour24 += 12;
+
+                    }
+
+                }
+
+
+                const hour24String =
+                    String(
+                        hour24
+                    ).padStart(
+                        2,
+                        '0'
+                    );
+
+
+                input.value =
+                    hour24String
+                    + ':'
+                    + selectedMinute;
+
+
+                label.textContent =
+                    selectedHour
+                    + ':'
+                    + selectedMinute
+                    + ' '
+                    + selectedPeriod;
+
+
+                label.classList.remove(
+                    'placeholder'
+                );
+
+
+                input.dispatchEvent(
+                    new Event(
+                        'change',
+                        {
+                            bubbles: true
+                        }
+                    )
+                );
+
+
+                closePicker();
+
+            }
+        );
 
 
         return {
-            syncSelectedButtons
+            syncVisuals
         };
 
     }
 
 
-    setupTimePicker({
-        input: startTime,
-        trigger: document.getElementById(
-            'start-time-trigger'
-        ),
-        panel: document.getElementById(
-            'start-time-panel'
-        ),
-        label: document.getElementById(
-            'start-time-label'
-        ),
-        period: startTimePeriod
-    });
+    const startTimePicker =
+        setupTimePicker({
+
+            picker:
+                document.querySelector(
+                    '[data-time-picker-id="start"]'
+                ),
+
+            input:
+                startTime,
+
+            trigger:
+                document.getElementById(
+                    'start-time-trigger'
+                ),
+
+            panel:
+                document.getElementById(
+                    'start-time-panel'
+                ),
+
+            label:
+                document.getElementById(
+                    'start-time-label'
+                )
+
+        });
 
 
-    setupTimePicker({
-        input: endTime,
-        trigger: document.getElementById(
-            'end-time-trigger'
-        ),
-        panel: document.getElementById(
-            'end-time-panel'
-        ),
-        label: document.getElementById(
-            'end-time-label'
-        ),
-        period: endTimePeriod
-    });
+    const endTimePicker =
+        setupTimePicker({
+
+            picker:
+                document.querySelector(
+                    '[data-time-picker-id="end"]'
+                ),
+
+            input:
+                endTime,
+
+            trigger:
+                document.getElementById(
+                    'end-time-trigger'
+                ),
+
+            panel:
+                document.getElementById(
+                    'end-time-panel'
+                ),
+
+            label:
+                document.getElementById(
+                    'end-time-label'
+                )
+
+        });
 
 
     startTime.addEventListener(
         'change',
         function () {
+
+            /*
+            |--------------------------------------------------------------------------
+            | Default durasi 1 jam
+            |--------------------------------------------------------------------------
+            |
+            | Setelah jam mulai dipilih, jam selesai otomatis diarahkan
+            | ke satu jam setelahnya. Durasi tetap fleksibel: pengguna
+            | masih bisa mengganti jam selesai menjadi 30 menit, 2 jam,
+            | 3 jam, dan seterusnya selama tetap setelah jam mulai.
+            |
+            */
+
+            if (startTime.value) {
+
+                const startMinutes =
+                    timeToMinutes(
+                        startTime.value
+                    );
+
+                const currentEndMinutes =
+                    endTime.value
+                        ? timeToMinutes(
+                            endTime.value
+                        )
+                        : null;
+
+                if (
+                    currentEndMinutes === null
+                    ||
+                    currentEndMinutes <= startMinutes
+                ) {
+
+                    const defaultEndMinutes =
+                        startMinutes + 60;
+
+                    /*
+                    |--------------------------------------------------------------------------
+                    | Jangan melewati tengah malam karena satu pengajuan
+                    | masih menggunakan tanggal yang sama.
+                    |--------------------------------------------------------------------------
+                    */
+
+                    if (
+                        defaultEndMinutes < 24 * 60
+                    ) {
+
+                        setEndTimeFromMinutes(
+                            defaultEndMinutes
+                        );
+
+                    } else {
+
+                        endTime.value = '';
+                        document
+                            .getElementById(
+                                'end-time-label'
+                            )
+                            .textContent =
+                            'Pilih jam';
+
+                        document
+                            .getElementById(
+                                'end-time-label'
+                            )
+                            .classList.add(
+                                'placeholder'
+                            );
+
+                        endTimePicker.syncVisuals();
+
+                    }
+
+                }
+
+            }
+
 
             validateTime();
 
@@ -3091,6 +3744,112 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
 
+    function timeToMinutes(
+        timeValue
+    ) {
+
+        const parts =
+            timeValue.split(':');
+
+        return (
+            parseInt(
+                parts[0],
+                10
+            ) * 60
+        ) +
+        parseInt(
+            parts[1],
+            10
+        );
+
+    }
+
+
+    function setEndTimeFromMinutes(
+        totalMinutes
+    ) {
+
+        if (
+            totalMinutes < 0
+            ||
+            totalMinutes >= 24 * 60
+        ) {
+
+            return;
+
+        }
+
+        const hour24 =
+            Math.floor(
+                totalMinutes / 60
+            );
+
+        const minute =
+            totalMinutes % 60;
+
+        const hour24String =
+            String(
+                hour24
+            ).padStart(
+                2,
+                '0'
+            );
+
+        const minuteString =
+            String(
+                minute
+            ).padStart(
+                2,
+                '0'
+            );
+
+        endTime.value =
+            hour24String
+            + ':'
+            + minuteString;
+
+        const period =
+            hour24 >= 12
+                ? 'PM'
+                : 'AM';
+
+        let hour12 =
+            hour24 % 12;
+
+        if (
+            hour12 === 0
+        ) {
+
+            hour12 = 12;
+
+        }
+
+        const endLabel =
+            document.getElementById(
+                'end-time-label'
+            );
+
+        endLabel.textContent =
+            String(
+                hour12
+            ).padStart(
+                2,
+                '0'
+            )
+            + ':'
+            + minuteString
+            + ' '
+            + period;
+
+        endLabel.classList.remove(
+            'placeholder'
+        );
+
+        endTimePicker.syncVisuals();
+
+    }
+
+
     function validateTime() {
 
         endTime.setCustomValidity(
@@ -3103,13 +3862,23 @@ document.addEventListener('DOMContentLoaded', function () {
             endTime.value
         ) {
 
+            const startMinutes =
+                timeToMinutes(
+                    startTime.value
+                );
+
+            const endMinutes =
+                timeToMinutes(
+                    endTime.value
+                );
+
             if (
-                endTime.value <=
-                startTime.value
+                endMinutes <=
+                startMinutes
             ) {
 
                 endTime.setCustomValidity(
-                    'Jam selesai harus lebih besar dari jam mulai.'
+                    'Jam selesai harus setelah jam mulai. Durasi peminjaman bebas sesuai kebutuhan.'
                 );
 
             }
@@ -3131,23 +3900,35 @@ document.addEventListener('DOMContentLoaded', function () {
         function (event) {
 
             if (
-                !event.target.closest('[data-time-picker]')
+                !event.target.closest(
+                    '[data-time-picker]'
+                )
             ) {
 
                 document
-                    .querySelectorAll('.time-picker-panel')
+                    .querySelectorAll(
+                        '.time-picker-panel'
+                    )
                     .forEach(
                         function (panel) {
+
                             panel.hidden = true;
+
                         }
                     );
 
+
                 document
-                    .querySelectorAll('.time-picker-trigger')
+                    .querySelectorAll(
+                        '.time-picker-trigger'
+                    )
                     .forEach(
                         function (trigger) {
 
-                            trigger.classList.remove('open');
+                            trigger.classList.remove(
+                                'open'
+                            );
+
                             trigger.setAttribute(
                                 'aria-expanded',
                                 'false'
@@ -3166,24 +3947,39 @@ document.addEventListener('DOMContentLoaded', function () {
         'keydown',
         function (event) {
 
-            if (event.key !== 'Escape') {
+            if (
+                event.key !== 'Escape'
+            ) {
+
                 return;
+
             }
 
+
             document
-                .querySelectorAll('.time-picker-panel')
+                .querySelectorAll(
+                    '.time-picker-panel'
+                )
                 .forEach(
                     function (panel) {
+
                         panel.hidden = true;
+
                     }
                 );
 
+
             document
-                .querySelectorAll('.time-picker-trigger')
+                .querySelectorAll(
+                    '.time-picker-trigger'
+                )
                 .forEach(
                     function (trigger) {
 
-                        trigger.classList.remove('open');
+                        trigger.classList.remove(
+                            'open'
+                        );
+
                         trigger.setAttribute(
                             'aria-expanded',
                             'false'
@@ -3223,8 +4019,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         if (
-            endTime.value <=
-            startTime.value
+            timeToMinutes(endTime.value) <=
+            timeToMinutes(startTime.value)
         ) {
 
             availabilityAvailable =
@@ -3236,7 +4032,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             availabilityStatus.textContent =
-                'Jam selesai harus lebih besar dari jam mulai.';
+                'Jam selesai harus setelah jam mulai. Durasi peminjaman bebas sesuai kebutuhan.';
 
 
             updateContinueButton();
@@ -3469,8 +4265,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (
             startTime.value &&
             endTime.value &&
-            endTime.value >
-            startTime.value
+            timeToMinutes(endTime.value) >
+            timeToMinutes(startTime.value)
         ) {
 
             parts.push(
@@ -3524,8 +4320,8 @@ document.addEventListener('DOMContentLoaded', function () {
             selectedDate &&
             startTime.value &&
             endTime.value &&
-            endTime.value >
-            startTime.value &&
+            timeToMinutes(endTime.value) >
+            timeToMinutes(startTime.value) &&
             availabilityAvailable;
 
 
