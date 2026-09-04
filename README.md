@@ -1,58 +1,93 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SIRUANG
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Sistem Informasi Peminjaman Ruang**
 
-## About Laravel
+SIRUANG adalah aplikasi web untuk membantu proses pengajuan dan pengelolaan peminjaman ruang secara terstruktur. Sistem ini dirancang untuk memudahkan pengguna dalam melihat informasi ruangan, memilih jadwal peminjaman, mengajukan penggunaan ruang, serta memantau status pengajuan.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tentang Project
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+SIRUANG dikembangkan sebagai sistem informasi peminjaman ruang untuk mendukung proses administrasi penggunaan ruangan.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Pada sisi pengguna, sistem menyediakan alur pengajuan yang terdiri dari pemilihan ruangan, pemilihan tanggal dan waktu, pengisian data peminjam dan kegiatan, pemeriksaan ketersediaan, hingga pengiriman pengajuan.
 
-## Learning Laravel
+Sistem menggunakan konsep unit ruangan sehingga satu ruangan dapat memiliki beberapa unit yang dapat digunakan secara bergantian berdasarkan ketersediaan.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Fitur
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Autentikasi
+- Login pengguna
+- Registrasi pengguna
+- Logout
+- Pengelolaan profil pengguna
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### Informasi Ruangan
+- Daftar ruangan
+- Detail ruangan
+- Informasi kapasitas dan deskripsi ruangan
+- Struktur ruangan dan unit
 
-## Agentic Development
+### Pengajuan Peminjaman
+- Pemilihan ruangan
+- Pemilihan tanggal peminjaman
+- Pemilihan waktu mulai dan selesai
+- Pemeriksaan ketersediaan ruangan
+- Pengisian data peminjam
+- Pengisian data kegiatan
+- Ringkasan pengajuan sebelum dikirim
+- Pembuatan kode pengajuan otomatis
+- Pengiriman pengajuan peminjaman
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### Riwayat Pengajuan
+- Melihat seluruh pengajuan pengguna
+- Filter berdasarkan status
+- Melihat detail pengajuan
+- Membatalkan pengajuan yang masih berstatus menunggu
 
-```bash
-composer require laravel/boost --dev
+### Status Pengajuan
 
-php artisan boost:install
-```
+Pengajuan memiliki beberapa status:
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+- `menunggu`
+- `disetujui`
+- `ditolak`
+- `selesai`
+- `dibatalkan`
 
-## Contributing
+## Teknologi
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Project ini dibangun menggunakan:
 
-## Code of Conduct
+- Laravel 13
+- PHP 8.3
+- MySQL
+- Blade
+- JavaScript
+- Vite
+- HTML
+- CSS
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Struktur Utama
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```text
+siruang/
+├── app/
+│   ├── Http/
+│   │   └── Controllers/
+│   └── Models/
+├── bootstrap/
+├── config/
+├── database/
+│   ├── migrations/
+│   └── seeders/
+├── public/
+├── resources/
+│   ├── css/
+│   ├── js/
+│   └── views/
+├── routes/
+├── storage/
+├── tests/
+├── artisan
+├── composer.json
+├── package.json
+└── vite.config.js
